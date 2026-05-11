@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>RentTech | Бронирование</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/src/style.css" />
+	</head>
+	<body>
+		<div class="page">
+			<header class="site-header">
+				<a class="brand" href="./index.html">RentTech</a>
+				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
+				<nav class="site-nav" data-nav>
+					<a href="./index.html">Главная</a>
+					<a href="./catalog.html">Каталог</a>
+					<a href="./equipment.html">Техника</a>
+					<a class="active" href="./booking.html">Бронирование</a>
+					<a href="./contacts.html">Контакты</a>
+				</nav>
+				<div class="currency-switch">
+					<label>
+						Валюта
+						<select data-currency>
+							<option value="RUB">RUB</option>
+							<option value="USD">USD</option>
+							<option value="EUR">EUR</option>
+						</select>
+					</label>
+				</div>
+			</header>
+
+			<main>
+				<section class="section">
+					<div class="section-head">
+						<h1>Заявка на бронирование</h1>
+						<p>Заполните данные, и мы подтвердим наличие.</p>
+					</div>
+					<div class="form-grid">
+						<form class="card" data-booking-form>
+							<label>
+								ФИО
+								<input
+									name="name"
+									type="text"
+									placeholder="Ваше имя"
+									required
+								/>
+							</label>
+							<label>
+								Телефон
+								<input
+									name="phone"
+									type="tel"
+									placeholder="+7 (999) 000-00-00"
+									required
+								/>
+							</label>
+							<label>
+								Техника
+								<input
+									name="equipment"
+									type="text"
+									placeholder="Гидравлический подъемник XL"
+									required
+								/>
+							</label>
+							<label>
+								Дата начала
+								<input name="start" type="date" required />
+							</label>
+							<label>
+								Дата окончания
+								<input name="end" type="date" required />
+							</label>
+							<label>
+								Доставка
+								<select name="delivery" required>
+									<option value="Городская зона">Городская зона</option>
+									<option value="Промзона">Промзона</option>
+									<option value="Самовывоз">Самовывоз</option>
+								</select>
+							</label>
+							<label>
+								Комментарий
+								<textarea
+									name="notes"
+									rows="3"
+									placeholder="Укажите доступ и требования безопасности"
+								></textarea>
+							</label>
+							<button class="btn" type="submit">Отправить заявку</button>
+						</form>
+						<div class="card" data-booking-summary>
+							<h3>Сводка заявки</h3>
+							<p>Отправьте форму, чтобы увидеть детали заявки.</p>
+							<p class="note">Ответим в течение 30 минут.</p>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<footer class="site-footer">
+				<div>
+					<p class="brand">RentTech</p>
+					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
+				</div>
+				<div>
+					<p>Поддержка: +1 (555) 010-8890</p>
+					<p>Email: support@renttech.local</p>
+				</div>
+				<div>
+					<p>Пн-Сб: 08:00-20:00</p>
+					<p>© <span data-year></span> RentTech</p>
+				</div>
+			</footer>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>

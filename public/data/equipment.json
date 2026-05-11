@@ -1,0 +1,74 @@
+[
+	{
+		"id": "lift-xl",
+		"name": "Гидравлический подъемник XL",
+		"category": "industrial",
+		"type": "Подъемник",
+		"power": "18 м",
+		"priceDay": 320,
+		"status": "available",
+		"description": "Стабильная платформа для фасадных и складских работ.",
+		"features": ["Автовыравнивание", "Защитные ограждения", "Пульт управления"],
+		"location": "Центральная база"
+	},
+	{
+		"id": "gen-pro",
+		"name": "Мобильный генератор Pro",
+		"category": "industrial",
+		"type": "Электропитание",
+		"power": "80 кВт",
+		"priceDay": 210,
+		"status": "available",
+		"description": "Надежное резервное питание для стройплощадок.",
+		"features": ["Экономичный режим", "Шумозащита", "3-фазный выход"],
+		"location": "Восточная база"
+	},
+	{
+		"id": "excavator-mini",
+		"name": "Компактный экскаватор M3",
+		"category": "industrial",
+		"type": "Земляные работы",
+		"power": "3.2 т",
+		"priceDay": 290,
+		"status": "busy",
+		"description": "Компактный радиус разворота для городских работ.",
+		"features": ["Быстрая смена ковша", "LED освещение", "Эко режим"],
+		"location": "Северная база"
+	},
+	{
+		"id": "wash-kit",
+		"name": "Компактная мойка Kit",
+		"category": "household",
+		"type": "Очистка",
+		"power": "160 бар",
+		"priceDay": 45,
+		"status": "busy",
+		"description": "Мойка высокого давления для дома и участка.",
+		"features": ["Пенообразователь", "Шланг 15 м", "Экономия воды"],
+		"location": "Центральная база"
+	},
+	{
+		"id": "drill-max",
+		"name": "Роторная дрель Max",
+		"category": "household",
+		"type": "Инструменты",
+		"power": "900 Вт",
+		"priceDay": 28,
+		"status": "available",
+		"description": "Набор для ежедневных работ с запасной батареей.",
+		"features": ["2 аккумулятора", "Ударный режим", "Быстрая зарядка"],
+		"location": "Южная база"
+	},
+	{
+		"id": "vac-pro",
+		"name": "Промышленный пылесос Pro",
+		"category": "industrial",
+		"type": "Очистка",
+		"power": "2200 Вт",
+		"priceDay": 120,
+		"status": "available",
+		"description": "Высокая мощность всасывания для пыльных объектов.",
+		"features": ["Сухая и влажная уборка", "HEPA фильтр", "Стальной корпус"],
+		"location": "Западная база"
+	}
+]

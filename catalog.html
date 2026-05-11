@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>RentTech | Каталог</title>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/src/style.css" />
+	</head>
+	<body>
+		<div class="page">
+			<header class="site-header">
+				<a class="brand" href="./index.html">RentTech</a>
+				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
+				<nav class="site-nav" data-nav>
+					<a href="./index.html">Главная</a>
+					<a class="active" href="./catalog.html">Каталог</a>
+					<a href="./equipment.html">Техника</a>
+					<a href="./booking.html">Бронирование</a>
+					<a href="./contacts.html">Контакты</a>
+				</nav>
+				<div class="currency-switch">
+					<label>
+						Валюта
+						<select data-currency>
+							<option value="RUB">RUB</option>
+							<option value="USD">USD</option>
+							<option value="EUR">EUR</option>
+						</select>
+					</label>
+				</div>
+			</header>
+
+			<main>
+				<section class="section">
+					<div class="section-head">
+						<h1>Каталог техники</h1>
+						<p>Актуальные позиции промышленной и бытовой техники.</p>
+					</div>
+					<div class="filters">
+						<label>
+							Категория
+							<select data-filter>
+								<option value="all">Все</option>
+								<option value="industrial">Промышленная</option>
+								<option value="household">Бытовая</option>
+							</select>
+						</label>
+						<label>
+							Доступность
+							<select data-availability>
+								<option value="all">Все</option>
+								<option value="available">Свободно</option>
+								<option value="busy">Занято</option>
+							</select>
+						</label>
+					</div>
+					<div class="card-grid" data-catalog-list></div>
+				</section>
+			</main>
+
+			<footer class="site-footer">
+				<div>
+					<p class="brand">RentTech</p>
+					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
+				</div>
+				<div>
+					<p>Поддержка: +1 (555) 010-8890</p>
+					<p>Email: support@renttech.local</p>
+				</div>
+				<div>
+					<p>Пн-Сб: 08:00-20:00</p>
+					<p>© <span data-year></span> RentTech</p>
+				</div>
+			</footer>
+		</div>
+		<script type="module" src="/src/main.js"></script>
+	</body>
+</html>
