@@ -5,25 +5,37 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>RentTech | Техника</title>
 		<link rel="icon" type="image/svg+xml" href="/cursach-front/favicon.svg" />
-		<script type="module" crossorigin src="/cursach-front/assets/main-Cl9ZCmSg.js"></script>
+		<script type="module" crossorigin src="/cursach-front/assets/main-DoiCmqOG.js"></script>
 		<link rel="stylesheet" crossorigin href="/cursach-front/assets/main-CXYpdqAU.css">
 	</head>
 	<body>
 		<div class="page">
 			<header class="site-header">
-				<a class="brand" href="./index.html">RentTech</a>
-				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
-				<nav class="site-nav" data-nav>
-					<a href="./index.html">Главная</a>
-					<a href="./catalog.html">Каталог</a>
-					<a class="active" href="./equipment.html">Техника</a>
-					<a href="./booking.html">Бронирование</a>
-					<a href="./contacts.html">Контакты</a>
+				<a class="brand site-header__brand" href="./index.html">RentTech</a>
+				<button
+					class="menu-toggle site-header__toggle"
+					type="button"
+					data-menu-toggle
+				>
+					Меню
+				</button>
+				<nav class="site-nav site-header__nav" data-nav>
+					<a class="site-header__nav-link" href="./index.html">Главная</a>
+					<a class="site-header__nav-link" href="./catalog.html">Каталог</a>
+					<a
+						class="active site-header__nav-link site-header__nav-link--active"
+						href="./equipment.html"
+						>Техника</a
+					>
+					<a class="site-header__nav-link" href="./booking.html"
+						>Бронирование</a
+					>
+					<a class="site-header__nav-link" href="./contacts.html">Контакты</a>
 				</nav>
-				<div class="currency-switch">
-					<label>
+				<div class="currency-switch site-header__currency">
+					<label class="site-header__currency-label">
 						Валюта
-						<select data-currency>
+						<select class="site-header__currency-select" data-currency>
 							<option value="RUB">RUB</option>
 							<option value="USD">USD</option>
 							<option value="EUR">EUR</option>
@@ -33,19 +45,22 @@
 			</header>
 
 			<main>
-				<section class="section" data-equipment-detail></section>
+				<section
+					class="section section--equipment"
+					data-equipment-detail
+				></section>
 			</main>
 
 			<footer class="site-footer">
-				<div>
-					<p class="brand">RentTech</p>
+				<div class="site-footer__column">
+					<p class="brand site-footer__brand">RentTech</p>
 					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Поддержка: +1 (555) 010-8890</p>
 					<p>Email: support@renttech.local</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Пн-Сб: 08:00-20:00</p>
 					<p>© <span data-year></span> RentTech</p>
 				</div>
