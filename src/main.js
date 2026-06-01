@@ -7,22 +7,77 @@ const CURRENCY_SYMBOLS = {
 	EUR: '€',
 }
 
-let currencyRates = { RUB: 1 }
-let currentCurrency = 'RUB'
-let catalogState = null
-let equipmentState = null
-let homeState = null
-
-const formatPrice = value => {
-	const rate = currencyRates[currentCurrency] || 1
-	const converted = value * rate
-	const formatter = new Intl.NumberFormat('ru-RU', {
-		style: 'currency',
-		currency: currentCurrency,
-		maximumFractionDigits: currentCurrency === 'RUB' ? 0 : 2,
-	})
-	return `${formatter.format(converted)} / день`
+class PageState {
+	constructor() {
+		this.catalog = null
+		this.equipment = null
+		this.home = null
+	}
 }
+
+class CurrencyService {
+	constructor(apiUrl, symbols) {
+		this.apiUrl = apiUrl
+		this.symbols = symbols
+		this.rates = { RUB: 1 }
+		this.currentCurrency = 'RUB'
+	}
+
+	formatPrice(value) {
+		const rate = this.rates[this.currentCurrency] || 1
+		const converted = value * rate
+		const formatter = new Intl.NumberFormat('ru-RU', {
+			style: 'currency',
+			currency: this.currentCurrency,
+			maximumFractionDigits: this.currentCurrency === 'RUB' ? 0 : 2,
+		})
+		return `${formatter.format(converted)} / день`
+	}
+
+	setCurrency(currency) {
+		if (!this.symbols[currency]) return
+		this.currentCurrency = currency
+		localStorage.setItem('currency', currency)
+	}
+
+	async loadRates() {
+		try {
+			const response = await fetch(this.apiUrl)
+			if (!response.ok) return
+			const data = await response.json()
+			if (data?.rates) {
+				this.rates = {
+					RUB: 1,
+					USD: data.rates.USD,
+					EUR: data.rates.EUR,
+				}
+			}
+		} catch {
+			// Use fallback rates
+		}
+	}
+
+	async init(select, onChange) {
+		const saved = localStorage.getItem('currency')
+		if (saved && this.symbols[saved]) {
+			this.currentCurrency = saved
+			select.value = saved
+		}
+
+		select.addEventListener('change', () => {
+			this.setCurrency(select.value)
+			onChange()
+		})
+
+		await this.loadRates()
+		onChange()
+	}
+}
+
+const pageState = new PageState()
+const currencyService = new CurrencyService(CURRENCY_API_URL, CURRENCY_SYMBOLS)
+
+const formatPrice = value => currencyService.formatPrice(value)
 
 const CATEGORY_LABELS = {
 	industrial: 'промышленная',
@@ -70,16 +125,16 @@ const renderCatalog = (items, target) => {
 	target.innerHTML = items
 		.map(
 			item => `
-      <article class="card">
-		<div class="card-tag">${CATEGORY_LABELS[item.category] || item.category}</div>
-        <h3>${item.name}</h3>
-        <p class="card-meta">${item.type} • ${item.power}</p>
-        <p class="card-desc">${item.description}</p>
-        <div class="card-row">
-          <span class="price">${formatPrice(item.priceDay)}</span>
-					<span class="status ${item.status}">${STATUS_LABELS[item.status] || item.status}</span>
+      <article class="card catalog-card">
+		<div class="card-tag catalog-card__tag">${CATEGORY_LABELS[item.category] || item.category}</div>
+        <h3 class="catalog-card__title">${item.name}</h3>
+        <p class="card-meta catalog-card__meta">${item.type} • ${item.power}</p>
+        <p class="card-desc catalog-card__desc">${item.description}</p>
+        <div class="card-row catalog-card__row">
+			  <span class="price catalog-card__price">${formatPrice(item.priceDay)}</span>
+					<span class="status status--${item.status} ${item.status} catalog-card__status">${STATUS_LABELS[item.status] || item.status}</span>
         </div>
-				<a class="btn btn-ghost" href="/equipment.html?id=${item.id}">Подробнее</a>
+				<a class="btn btn--ghost btn-ghost catalog-card__link" href="./equipment.html?id=${item.id}">Подробнее</a>
       </article>
     `,
 		)
@@ -89,32 +144,32 @@ const renderCatalog = (items, target) => {
 const renderEquipment = (item, container) => {
 	if (!item || !container) return
 	container.innerHTML = `
-		<div class="detail-hero">
-			<div>
-				<p class="eyebrow">${CATEGORY_LABELS[item.category] || item.category} техника</p>
-				<h1>${item.name}</h1>
-				<p class="lead">${item.description}</p>
-				<div class="detail-tags">
-					<span>${item.type}</span>
-					<span>${item.power}</span>
-					<span>${item.location}</span>
+		<div class="detail detail__hero">
+			<div class="detail__content">
+				<p class="eyebrow detail__eyebrow">${CATEGORY_LABELS[item.category] || item.category} техника</p>
+				<h1 class="detail__title">${item.name}</h1>
+				<p class="lead detail__lead">${item.description}</p>
+				<div class="detail-tags detail__tags">
+					<span class="detail__tag">${item.type}</span>
+					<span class="detail__tag">${item.power}</span>
+					<span class="detail__tag">${item.location}</span>
 				</div>
 			</div>
-			<div class="detail-panel">
-				<p class="price">${formatPrice(item.priceDay)}</p>
-				<p class="status ${item.status}">${STATUS_LABELS[item.status] || item.status}</p>
-				<a class="btn" href="/booking.html?id=${item.id}">Забронировать</a>
-				<p class="note">Доставка в течение 24 часов по городу.</p>
+			<div class="detail-panel detail__panel">
+				<p class="price detail__price">${formatPrice(item.priceDay)}</p>
+				<p class="status status--${item.status} ${item.status} detail__status">${STATUS_LABELS[item.status] || item.status}</p>
+				<a class="btn detail__button" href="./booking.html?id=${item.id}">Забронировать</a>
+				<p class="note detail__note">Доставка в течение 24 часов по городу.</p>
 			</div>
 		</div>
-		<section class="detail-grid">
-			<div class="detail-card">
+		<section class="detail-grid detail__grid">
+			<div class="detail-card detail__card">
 				<h3>Ключевые характеристики</h3>
 				<ul>
 					${item.features.map(feature => `<li>${feature}</li>`).join('')}
 				</ul>
 			</div>
-			<div class="detail-card">
+			<div class="detail-card detail__card">
 				<h3>Сервис включен</h3>
 				<ul>
 					<li>Инструктаж или обучение оператора</li>
@@ -147,7 +202,7 @@ const initCatalogPage = async () => {
 		renderCatalog(filtered, list)
 	}
 
-	catalogState = {
+	pageState.catalog = {
 		applyFilters,
 	}
 
@@ -171,7 +226,7 @@ const initEquipmentPage = async () => {
 		return
 	}
 
-	equipmentState = {
+	pageState.equipment = {
 		item,
 		container,
 	}
@@ -180,14 +235,14 @@ const initEquipmentPage = async () => {
 }
 
 const updatePrices = () => {
-	if (homeState?.items && homeState?.list) {
-		renderCatalog(homeState.items, homeState.list)
+	if (pageState.home?.items && pageState.home?.list) {
+		renderCatalog(pageState.home.items, pageState.home.list)
 	}
-	if (catalogState?.applyFilters) {
-		catalogState.applyFilters()
+	if (pageState.catalog?.applyFilters) {
+		pageState.catalog.applyFilters()
 	}
-	if (equipmentState?.item && equipmentState?.container) {
-		renderEquipment(equipmentState.item, equipmentState.container)
+	if (pageState.equipment?.item && pageState.equipment?.container) {
+		renderEquipment(pageState.equipment.item, pageState.equipment.container)
 	}
 }
 
@@ -195,33 +250,7 @@ const initCurrency = async () => {
 	const select = document.querySelector('[data-currency]')
 	if (!select) return
 
-	const saved = localStorage.getItem('currency')
-	if (saved && CURRENCY_SYMBOLS[saved]) {
-		currentCurrency = saved
-		select.value = saved
-	}
-
-	select.addEventListener('change', () => {
-		currentCurrency = select.value
-		localStorage.setItem('currency', currentCurrency)
-		updatePrices()
-	})
-
-	try {
-		const response = await fetch(CURRENCY_API_URL)
-		if (!response.ok) return
-		const data = await response.json()
-		if (data?.rates) {
-			currencyRates = {
-				RUB: 1,
-				USD: data.rates.USD,
-				EUR: data.rates.EUR,
-			}
-			updatePrices()
-		}
-	} catch {
-		// Use fallback rates
-	}
+	await currencyService.init(select, updatePrices)
 }
 
 const initHomePage = async () => {
@@ -230,7 +259,7 @@ const initHomePage = async () => {
 
 	const data = await getData()
 	const items = data.slice(0, 3)
-	homeState = {
+	pageState.home = {
 		items,
 		list,
 	}
@@ -260,13 +289,13 @@ const initBookingPage = async () => {
 		const payload = Object.fromEntries(formData.entries())
 
 		summary.innerHTML = `
-			<h3>Сводка заявки</h3>
-			<p><strong>Клиент:</strong> ${payload.name}</p>
-			<p><strong>Телефон:</strong> ${payload.phone}</p>
-			<p><strong>Техника:</strong> ${payload.equipment}</p>
-			<p><strong>Даты:</strong> ${payload.start} — ${payload.end}</p>
-			<p><strong>Доставка:</strong> ${payload.delivery}</p>
-			<p class="note">Подтвердим наличие в течение 30 минут.</p>
+			<h3 class="booking-summary__title">Сводка заявки</h3>
+			<p class="booking-summary__row"><strong>Клиент:</strong> ${payload.name}</p>
+			<p class="booking-summary__row"><strong>Телефон:</strong> ${payload.phone}</p>
+			<p class="booking-summary__row"><strong>Техника:</strong> ${payload.equipment}</p>
+			<p class="booking-summary__row"><strong>Даты:</strong> ${payload.start} — ${payload.end}</p>
+			<p class="booking-summary__row"><strong>Доставка:</strong> ${payload.delivery}</p>
+			<p class="note booking-summary__note">Подтвердим наличие в течение 30 минут.</p>
 		`
 
 		form.reset()

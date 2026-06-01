@@ -10,19 +10,31 @@
 	<body>
 		<div class="page">
 			<header class="site-header">
-				<a class="brand" href="./index.html">RentTech</a>
-				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
-				<nav class="site-nav" data-nav>
-					<a href="./index.html">Главная</a>
-					<a class="active" href="./catalog.html">Каталог</a>
-					<a href="./equipment.html">Техника</a>
-					<a href="./booking.html">Бронирование</a>
-					<a href="./contacts.html">Контакты</a>
+				<a class="brand site-header__brand" href="./index.html">RentTech</a>
+				<button
+					class="menu-toggle site-header__toggle"
+					type="button"
+					data-menu-toggle
+				>
+					Меню
+				</button>
+				<nav class="site-nav site-header__nav" data-nav>
+					<a class="site-header__nav-link" href="./index.html">Главная</a>
+					<a
+						class="active site-header__nav-link site-header__nav-link--active"
+						href="./catalog.html"
+						>Каталог</a
+					>
+					<a class="site-header__nav-link" href="./equipment.html">Техника</a>
+					<a class="site-header__nav-link" href="./booking.html"
+						>Бронирование</a
+					>
+					<a class="site-header__nav-link" href="./contacts.html">Контакты</a>
 				</nav>
-				<div class="currency-switch">
-					<label>
+				<div class="currency-switch site-header__currency">
+					<label class="site-header__currency-label">
 						Валюта
-						<select data-currency>
+						<select class="site-header__currency-select" data-currency>
 							<option value="RUB">RUB</option>
 							<option value="USD">USD</option>
 							<option value="EUR">EUR</option>
@@ -33,12 +45,12 @@
 
 			<main>
 				<section class="section">
-					<div class="section-head">
+					<div class="section-head section__head">
 						<h1>Каталог техники</h1>
 						<p>Актуальные позиции промышленной и бытовой техники.</p>
 					</div>
-					<div class="filters">
-						<label>
+					<div class="filters filters--catalog">
+						<label class="filters__item">
 							Категория
 							<select data-filter>
 								<option value="all">Все</option>
@@ -46,7 +58,7 @@
 								<option value="household">Бытовая</option>
 							</select>
 						</label>
-						<label>
+						<label class="filters__item">
 							Доступность
 							<select data-availability>
 								<option value="all">Все</option>
@@ -55,20 +67,20 @@
 							</select>
 						</label>
 					</div>
-					<div class="card-grid" data-catalog-list></div>
+					<div class="card-grid card-grid--catalog" data-catalog-list></div>
 				</section>
 			</main>
 
 			<footer class="site-footer">
-				<div>
-					<p class="brand">RentTech</p>
+				<div class="site-footer__column">
+					<p class="brand site-footer__brand">RentTech</p>
 					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Поддержка: +1 (555) 010-8890</p>
 					<p>Email: support@renttech.local</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Пн-Сб: 08:00-20:00</p>
 					<p>© <span data-year></span> RentTech</p>
 				</div>

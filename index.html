@@ -10,19 +10,31 @@
 	<body>
 		<div class="page">
 			<header class="site-header">
-				<a class="brand" href="./index.html">RentTech</a>
-				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
-				<nav class="site-nav" data-nav>
-					<a class="active" href="./index.html">Главная</a>
-					<a href="./catalog.html">Каталог</a>
-					<a href="./equipment.html">Техника</a>
-					<a href="./booking.html">Бронирование</a>
-					<a href="./contacts.html">Контакты</a>
+				<a class="brand site-header__brand" href="./index.html">RentTech</a>
+				<button
+					class="menu-toggle site-header__toggle"
+					type="button"
+					data-menu-toggle
+				>
+					Меню
+				</button>
+				<nav class="site-nav site-header__nav" data-nav>
+					<a
+						class="active site-header__nav-link site-header__nav-link--active"
+						href="./index.html"
+						>Главная</a
+					>
+					<a class="site-header__nav-link" href="./catalog.html">Каталог</a>
+					<a class="site-header__nav-link" href="./equipment.html">Техника</a>
+					<a class="site-header__nav-link" href="./booking.html"
+						>Бронирование</a
+					>
+					<a class="site-header__nav-link" href="./contacts.html">Контакты</a>
 				</nav>
-				<div class="currency-switch">
-					<label>
+				<div class="currency-switch site-header__currency">
+					<label class="site-header__currency-label">
 						Валюта
-						<select data-currency>
+						<select class="site-header__currency-select" data-currency>
 							<option value="RUB">RUB</option>
 							<option value="USD">USD</option>
 							<option value="EUR">EUR</option>
@@ -33,43 +45,55 @@
 
 			<main>
 				<section class="hero">
-					<div class="hero-copy">
-						<p class="eyebrow">Аренда промышленной и бытовой техники</p>
-						<h1>Бронируйте надежную технику без простоев.</h1>
-						<p class="lead">
+					<div class="hero-copy hero__copy">
+						<p class="eyebrow hero__eyebrow">
+							Аренда промышленной и бытовой техники
+						</p>
+						<h1 class="hero__title">
+							Бронируйте надежную технику без простоев.
+						</h1>
+						<p class="lead hero__lead">
 							Единый портал для кранов, подъемников, компрессоров и
 							инструментов. Заказывайте, отслеживайте и продлевайте аренду за
 							минуты.
 						</p>
-						<div class="hero-actions">
-							<a class="btn" href="./catalog.html">Открыть каталог</a>
-							<a class="btn btn-ghost" href="./booking.html">Начать бронь</a>
+						<div class="hero-actions hero__actions">
+							<a
+								class="btn btn--ghost btn-ghost hero__action"
+								href="./catalog.html"
+								>Открыть каталог</a
+							>
+							<a
+								class="btn btn--ghost btn-ghost hero__action"
+								href="./booking.html"
+								>Начать бронь</a
+							>
 						</div>
-						<div class="hero-stats">
-							<div>
+						<div class="hero-stats hero__stats">
+							<div class="hero__stat">
 								<strong>240+</strong>
 								<span>единиц доступно сегодня</span>
 							</div>
-							<div>
+							<div class="hero__stat">
 								<strong>4.8/5</strong>
 								<span>оценка сервиса</span>
 							</div>
-							<div>
+							<div class="hero__stat">
 								<strong>12</strong>
 								<span>городских зон доставки</span>
 							</div>
 						</div>
 					</div>
-					<div class="hero-panel">
-						<div class="panel-card">
+					<div class="hero-panel hero__panel">
+						<div class="panel-card hero__panel-card">
 							<h3>Быстрая доставка</h3>
 							<p>Выезд в течение 2 часов для срочных заказов.</p>
 						</div>
-						<div class="panel-card">
+						<div class="panel-card hero__panel-card">
 							<h3>Проверенные операторы</h3>
 							<p>Сертифицированные специалисты для сложной техники.</p>
 						</div>
-						<div class="panel-card">
+						<div class="panel-card hero__panel-card">
 							<h3>Гибкие условия</h3>
 							<p>Почасовая, посуточная и долгосрочная аренда.</p>
 						</div>
@@ -77,30 +101,30 @@
 				</section>
 
 				<section class="section">
-					<div class="section-head">
+					<div class="section-head section__head">
 						<h2>Популярная техника</h2>
 						<p>Самые востребованные позиции недели.</p>
 					</div>
-					<div class="card-grid" data-home-list></div>
+					<div class="card-grid card-grid--home" data-home-list></div>
 				</section>
 
-				<section class="section alt">
-					<div class="section-head">
+				<section class="section section--alt alt">
+					<div class="section-head section__head">
 						<h2>Как это работает</h2>
 						<p>Три шага от заявки до выдачи.</p>
 					</div>
-					<div class="steps">
-						<div class="step">
+					<div class="steps steps--process">
+						<div class="step steps__item">
 							<span>01</span>
 							<h3>Выберите технику</h3>
 							<p>Фильтруйте по типу, мощности и доступности.</p>
 						</div>
-						<div class="step">
+						<div class="step steps__item">
 							<span>02</span>
 							<h3>Подтвердите график</h3>
 							<p>Укажите даты, адрес доставки и опции оператора.</p>
 						</div>
-						<div class="step">
+						<div class="step steps__item">
 							<span>03</span>
 							<h3>Начинайте работу</h3>
 							<p>Отслеживайте доставку и продлевайте аренду.</p>
@@ -110,15 +134,15 @@
 			</main>
 
 			<footer class="site-footer">
-				<div>
-					<p class="brand">RentTech</p>
+				<div class="site-footer__column">
+					<p class="brand site-footer__brand">RentTech</p>
 					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Поддержка: +1 (555) 010-8890</p>
 					<p>Email: support@renttech.local</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Пн-Сб: 08:00-20:00</p>
 					<p>© <span data-year></span> RentTech</p>
 				</div>

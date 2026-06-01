@@ -10,19 +10,31 @@
 	<body>
 		<div class="page">
 			<header class="site-header">
-				<a class="brand" href="./index.html">RentTech</a>
-				<button class="menu-toggle" type="button" data-menu-toggle>Меню</button>
-				<nav class="site-nav" data-nav>
-					<a href="./index.html">Главная</a>
-					<a href="./catalog.html">Каталог</a>
-					<a href="./equipment.html">Техника</a>
-					<a href="./booking.html">Бронирование</a>
-					<a class="active" href="./contacts.html">Контакты</a>
+				<a class="brand site-header__brand" href="./index.html">RentTech</a>
+				<button
+					class="menu-toggle site-header__toggle"
+					type="button"
+					data-menu-toggle
+				>
+					Меню
+				</button>
+				<nav class="site-nav site-header__nav" data-nav>
+					<a class="site-header__nav-link" href="./index.html">Главная</a>
+					<a class="site-header__nav-link" href="./catalog.html">Каталог</a>
+					<a class="site-header__nav-link" href="./equipment.html">Техника</a>
+					<a class="site-header__nav-link" href="./booking.html"
+						>Бронирование</a
+					>
+					<a
+						class="active site-header__nav-link site-header__nav-link--active"
+						href="./contacts.html"
+						>Контакты</a
+					>
 				</nav>
-				<div class="currency-switch">
-					<label>
+				<div class="currency-switch site-header__currency">
+					<label class="site-header__currency-label">
 						Валюта
-						<select data-currency>
+						<select class="site-header__currency-select" data-currency>
 							<option value="RUB">RUB</option>
 							<option value="USD">USD</option>
 							<option value="EUR">EUR</option>
@@ -33,46 +45,50 @@
 
 			<main>
 				<section class="section">
-					<div class="section-head">
+					<div class="section-head section__head">
 						<h1>Контакты и поддержка</h1>
 						<p>Поможем с срочной и долгосрочной арендой.</p>
 					</div>
-					<div class="contact-grid">
-						<div class="card">
+					<div class="contact-grid contact-grid--contacts">
+						<div class="card contact-card">
 							<h3>Служба поддержки</h3>
 							<p>Телефон: +1 (555) 010-8890</p>
 							<p>Email: support@renttech.local</p>
 							<p>Пн-Сб: 08:00-20:00</p>
 							<p>Экстренная линия: +1 (555) 010-7720</p>
 						</div>
-						<div class="card">
+						<div class="card contact-card">
 							<h3>Главная база</h3>
 							<p>Industrial Avenue 12, док 4</p>
 							<p>Склад: 07:00-22:00</p>
 							<p>Парковка для грузовых авто</p>
-							<div class="map-placeholder">Заглушка карты проезда</div>
+							<div class="map-placeholder contact-card__map">
+								Заглушка карты проезда
+							</div>
 						</div>
 					</div>
 				</section>
 
-				<section class="section alt">
-					<div class="section-head">
+				<section class="section section--alt alt">
+					<div class="section-head section__head">
 						<h2>FAQ</h2>
 						<p>Типовые вопросы перед бронированием.</p>
 					</div>
-					<div class="faq">
-						<details>
-							<summary>Предоставляете ли вы операторов?</summary>
+					<div class="faq faq--contacts">
+						<details class="faq__item">
+							<summary class="faq__summary">
+								Предоставляете ли вы операторов?
+							</summary>
 							<p>
 								Да, для тяжелой техники доступны сертифицированные операторы.
 							</p>
 						</details>
-						<details>
-							<summary>Можно продлить аренду?</summary>
+						<details class="faq__item">
+							<summary class="faq__summary">Можно продлить аренду?</summary>
 							<p>Продление доступно прямо в клиентском портале.</p>
 						</details>
-						<details>
-							<summary>Включена ли страховка?</summary>
+						<details class="faq__item">
+							<summary class="faq__summary">Включена ли страховка?</summary>
 							<p>Базовая страховка включена, расширенная — по запросу.</p>
 						</details>
 					</div>
@@ -80,15 +96,15 @@
 			</main>
 
 			<footer class="site-footer">
-				<div>
-					<p class="brand">RentTech</p>
+				<div class="site-footer__column">
+					<p class="brand site-footer__brand">RentTech</p>
 					<p>Клиентский портал аренды промышленной и бытовой техники.</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Поддержка: +1 (555) 010-8890</p>
 					<p>Email: support@renttech.local</p>
 				</div>
-				<div>
+				<div class="site-footer__column">
 					<p>Пн-Сб: 08:00-20:00</p>
 					<p>© <span data-year></span> RentTech</p>
 				</div>
